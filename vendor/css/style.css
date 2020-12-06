@@ -11,7 +11,7 @@ h3,
 h4,
 h5,
 h6 {
-   color: #30475e
+   color: #30475e;
 }
 
 /*Horizontal Line*/
@@ -90,7 +90,7 @@ h6 {
 }
 
 #contact-form{
-    border: 1px dashed grey;
+    border: 1px dashed #C0C0C0;
     padding: 2em;
 }
 
@@ -98,10 +98,11 @@ label, input, textarea{
     outline: none;
     border: none !important;
     background: none !important;
+    color: #30475e !important;
 }
 
 input, textarea{
-    border: 1px solid grey !important;
+    border: 1px solid #C0C0C0 !important;
 }
 
 input:focus, textarea:focus {
@@ -123,14 +124,14 @@ input:focus, textarea:focus {
 }
 
 #emergency-heading{
-    border: 1px solid black;
+    border: 1px solid #C0C0C0;
     padding: 0.5em 0;
     margin: 1em 0;
     width: 100% !important;
 }
 
 .contact-styles{
-    border: 1px dashed grey;
+    border: 1px dashed #C0C0C0;
     padding: 2em;
     margin-bottom: 5em
 }

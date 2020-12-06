@@ -1,0 +1,19 @@
+input[type="file"]{
+    padding-bottom: 2.3em;
+}
+
+.active{
+    font-weight: bolder !important;
+    opacity: 1 !important;
+    background-color: #2E59D9;
+}
+
+.active-sub{
+    background-color: #EAECF4;
+}
+
+@media screen and (min-width:0px) and (max-width: 500px){
+    .show{
+        display: block !important;
+    }
+}
