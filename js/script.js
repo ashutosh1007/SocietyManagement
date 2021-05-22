@@ -175,17 +175,12 @@ $(document).ready(function () {
 
         ,
         submitHandler: function (form) {
-            var checkedValue = [];
-            $.each($(".category:checked"), function () {
-                checkedValue.push($(this).val());
-            });
-
             data = {
-                    "contact_name": $('#contact_name').val(),
-                    "company_name": $('#company_name').val(),
-                    "your_message": $('#your_message').val(),
-                    "category": checkedValue,
+                    "name": $('#name').val(),
+                    "location": $('#location').val(),
+                    "message": $('#message').val(),
                     "email": $('#email').val(),
+                    "phone_no": $('#phone_no').val(),
                     "action": "create_enquiry"
                 }
 
@@ -194,11 +189,11 @@ $(document).ready(function () {
                     type: "POST",
                     data: data,
                     success: function (result) {
-                        $('#contact_name').val('');
-                        $('#company_name').val('');
-                        $('#your_message').val('');
-                        $('.category').prop('checked', false);
+                        $('#name').val('');
+                        $('#location').val('');
+                        $('#message').val('');
                         $('#email').val('');
+                        $('#phone_no').val('');
                         toastr.success("Enquiry Sent Successfully");
                     },
                     error: function (result) {
