@@ -1,0 +1,20 @@
+/**
+ * style.css
+ * Contains CSS to make site responsive i.e. mobile and tab friendly.
+ */
+
+.vertical-heading{
+    text-align: center;
+}
+
+.vertical-heading h5{
+    transform: rotate(0deg);
+    display: block;
+    position: static;
+    margin-bottom: 15px;
+}
+
+.vertical-heading h2{
+    font-size: 30px;
+    margin: 0;
+}

@@ -12,6 +12,7 @@
         }
         
         public function insertMember($member_name, $member_email, $member_role){
+            
             $query  = "INSERT INTO members (member_name, member_email, member_password, member_role, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)";
 
             $current_date = date("Y-m-d h:i:sa");
@@ -19,6 +20,24 @@
             
             $preparedStatement = $this->connection->prepare($query);
             $preparedStatement->bind_param("ssssss", $member_name, $member_email, $member_password, $member_role, $current_date, $current_date);
+            if($preparedStatement->execute()){
+                return $this->connection->insert_id;
+            } else{
+                die("ERROR WHILE INSERTING STUDENT");
+            }
+        }
+
+        public function register($member_name, $member_email, $member_password){
+            $options = [
+                'cost' => 12,
+            ];
+            $hashedPassword = password_hash( $member_password , PASSWORD_BCRYPT, $options);
+            
+            $query  = "INSERT INTO members (member_name, member_email, member_password, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
+
+            $current_date = date("Y-m-d h:i:sa");
+            $preparedStatement = $this->connection->prepare($query);
+            $preparedStatement->bind_param("sssss", $member_name, $member_email, $hashedPassword, $current_date, $current_date);
             if($preparedStatement->execute()){
                 return $this->connection->insert_id;
             } else{

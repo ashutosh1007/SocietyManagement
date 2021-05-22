@@ -1,6 +1,14 @@
 
 <?php
     $user = new User();
+    if( isset($_GET['delete'] ) ) {
+     $id = $_GET['delete'];
+     $user->deleteMember($id);
+     $_SESSION['op'] = "delete";
+     $_SESSION['p'] = "success";
+     $_SESSION['page'] = "member";
+     header("Location: members.php"); 
+ }
 ?>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -15,8 +23,14 @@
                         <th>Member Name</th>
                         <th>Member Email</th>
                         <th>Member Role</th>
+                        <?php
+                            if($user_role == 'admin'){ 
+                        ?>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <?php
+                            } 
+                        ?>   
                     </tr>
                 </thead>
                 <tfoot>
@@ -25,8 +39,14 @@
                         <th>Member Name</th>
                         <th>Member Email</th>
                         <th>Member Role</th>
+                        <?php
+                            if($user_role == 'admin'){ 
+                        ?>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <?php
+                            } 
+                        ?>
                     </tr>
                 </tfoot>
                  <tbody>
@@ -45,10 +65,10 @@
                             echo "<td>$member_name</td>";
                             echo "<td>$member_email</td>";
                             echo "<td>$member_role</td>";
-                            echo "<td><a href='members.php?source=edit_member&mid=$member_id' class='btn btn-primary'><span class='fa fa-pen'></span> Edit</a></td> ";
-                            
-                            echo "<td> <button type='button' class='btn btn-danger' data-target='#confirmfordelete' data-toggle='modal' data-member_name = '$member_name' data-member_id = '$member_id'> <span class='fa fa-times'></span> Delete </button></td>";                
-                            
+                            if($user_role == 'admin'){ 
+                                echo "<td><a href='members.php?source=edit_member&mid=$member_id' class='btn btn-primary'><span class='fa fa-pen'></span> </a></td> ";
+                                echo "<td><button type='button' class='btn btn-danger delete-member' data-member-id='$member_id'> <span class='fa fa-trash'></span></button></td>";
+                            } 
                             echo "</tr>";
                         }
                     ?>    
@@ -57,11 +77,3 @@
         </div>
     </div>
 </div>
-<?php
- if( isset($_GET['delete'] ) ) {
-     $id = $_GET['delete'];
-     $user = new User();
-     $user->deleteMember($id);
-     header("Location: members.php"); 
- }
-?>

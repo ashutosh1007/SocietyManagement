@@ -24,8 +24,8 @@
         
            <div class="form-group">
                 <select name="member_role" id="member_role" class="form-control">
-                   <option value="admin">Committee Member</option>
-                   <option value="society_member">Society Member</option>
+                   <option value="Admin">Committee Member</option>
+                   <option value="Society Member">Society Member</option>
                 </select>
             </div>
             

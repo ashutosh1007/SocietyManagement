@@ -12,6 +12,49 @@ input[type="file"]{
     background-color: #EAECF4;
 }
 
+#flat_section{
+    display:none
+}
+
+.progress {
+  font-size: larger;
+  height: 35px;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 0;
+}
+
+.bg-purple {
+  background-color: #825CD6 !important;
+}
+
+.progress .progress-bar {
+  transition: unset;
+}
+
+/* .progress {
+    height: 35px;
+  
+  }
+  .progress .skill {
+    line-height: 35px;
+    padding: 0;
+    margin: 0 0 0 20px;
+    text-transform: uppercase;
+  }
+  .progress .skill .val {
+    float: right;
+    font-style: normal;
+    margin: 0 20px 0 0;
+  }
+  
+  .progress-bar {
+    text-align: left;
+    transition: width 5s ease;
+  } */
+
 @media screen and (min-width:0px) and (max-width: 500px){
     .show{
         display: block !important;

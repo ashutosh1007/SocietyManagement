@@ -3,7 +3,7 @@
     if(isset($_POST['register'])){
         extract($_POST);
         $user = new User();
-        $user_id = $user->insertMember($member_name, $member_email, $member_password);
+        $user_id = $user->register($member_name, $member_email, $member_password);
         echo "added";
     }
 ?>

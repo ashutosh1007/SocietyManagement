@@ -4,7 +4,10 @@
         extract($_POST);
         $user = new User();
         $member_update = $user->updateMember($mid, $member_name, $member_email, $member_role);
-        Functions::redirect("members.php?op=update&p=success&page=member");
+        $_SESSION['op'] = "update";
+        $_SESSION['p'] = "success";
+        $_SESSION['page'] = "member";
+        Functions::redirect("members.php");
     }
 ?>
 
@@ -34,9 +37,12 @@
        <div class="form-group">
             <input type="text" id="member_email" name="member_email" class="form-control" value="<?php echo $member_email; ?>" required> 
         </div>
-
-       <div class="form-group">
-            <input type="text" id="member_role" name="member_role" class="form-control" value="<?php echo $member_role; ?>" required> 
+        
+        <div class="form-group">
+                <select name="member_role" id="member_role" class="form-control">
+                   <option value="admin">Committee Member</option>
+                   <option value="society_member">Society Member</option>
+                </select>
         </div>
 
         <div class="form-group">                       

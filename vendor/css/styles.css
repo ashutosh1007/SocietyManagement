@@ -1,0 +1,298 @@
+/**********************************************
+                    GENERAL
+**********************************************/
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Hide scrollbars */
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500 !important;
+    padding-top: 1em;
+}
+
+p{
+    font-weight: 300;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.parallax{
+    background: rgb(232,244,234) fixed center;
+    background: linear-gradient(180deg, rgba(232,244,234,1) 0%, rgba(252,252,252,1) 17%, rgba(255,255,255,1) 60%);
+    padding-bottom: 1em;
+}
+
+.horizontal-line{ 
+    background-color: grey;
+    margin: 0 1.5em;
+    margin-bottom: 1em
+}
+
+/*Navbar Styling*/
+.nav-item{
+    padding: 0 2em;    
+}
+
+.nav-link,
+.header-nav-link{
+    font-size: 20px;
+    font-weight: 400 !important;
+    color: black !important;
+} 
+
+.nav-link:hover{
+    border-bottom: 3px solid #085f48;
+    color: #085f48 !important;
+}
+
+.active{
+    border-bottom: 3px solid #085f48;
+    color: #085f48 !important;
+}
+
+.product-img{
+    background-color: white; 
+    border: 1px solid black;
+}
+
+/*Above navbar*/
+#navbar-contact-us {
+    background-color: #085f48;
+    font-weight: 100 !important;
+}
+
+/**********************************************
+                    INDEX PAGE
+**********************************************/
+
+.parallax-2 {
+    background-color: #F6FAEC;
+    padding: 2em 0;    
+}
+
+.green-card{
+    opacity: 0.8;
+    height: 150px;	 
+    line-height: 150px;
+    border: 1px solid black;
+}
+
+.green-card:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.green-card-h2{
+    font-weight: 700 !important;
+    color: black;
+    text-transform: capitalize !important;
+}
+
+.green-card-pm{
+    margin: 1.5em 2.7em ;
+    padding: 20px 25px;
+}
+
+#products{
+    background: url('../images/products.png') no-repeat;
+    background-size: cover;
+}
+
+#about-us{
+    background: url('../images/about-us.png') no-repeat;
+    background-size: cover;
+}
+
+#contact-us{
+    background: url('../images/contact.png') no-repeat;
+    background-size: cover;
+}
+
+/**********************************************
+                    FOOTER
+**********************************************/
+#footer{
+    background-color: #085f48;  
+    color: white !important;
+    bottom:0;
+    width:100%;
+    clear: both; 
+    text-align:center; 
+    height: 50px;	 
+    line-height: 50px;
+}
+
+/**********************************************
+                ABOUT US PAGE
+**********************************************/
+
+.p-styles{
+    width: 100%; 
+    padding: 0 1.5em 1em;
+    margin-bottom: auto;
+    text-align: justify;
+}
+
+/**********************************************
+                CONTACT US PAGE
+**********************************************/
+
+#contact-form{
+    background: rgb(252,252,252) fixed center;
+    background: -webkit-linear-gradient(rgba(252,252,252,1) 0%, rgba(255,255,255,1) 17%);
+    background: -o-linear-gradient(rgba(252,252,252,1) 0%, rgba(255,255,255,1) 17%);
+    background: linear-gradient(rgba(252,252,252,1) 0%, rgba(255,255,255,1) 17%);
+    padding: 2em;
+}
+
+#contact-form-h4{
+    margin-top: -1em;
+    font-weight: 400 !important;
+}
+
+label{
+    font-weight: 200;
+    letter-spacing: 2px;
+    border: none !important;
+    outline: 0 !important;
+    color: black !important;
+    background: none !important ;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.form-control:focus{
+    outline: none !important; 
+    box-shadow: none;
+}
+
+.contact-styles {
+    border: 1px dashed lightgrey;
+}
+
+.btn-success{
+    background-color: #085f48;
+    opacity: 0.8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-success:hover{
+    background-color: #085f48;
+    opacity: 1;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/**********************************************
+                    PRODUCTS
+**********************************************/
+#bags{
+    width: 100%;
+    margin: 0 auto;    
+}
+
+.categories{
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
+    box-shadow: none;
+    outline: 0;
+    background: transparent;
+    letter-spacing: 1px;
+    background-color: none;
+    border: none;
+    height: 100%;
+    transition: all .2s ease-in-out;
+}
+
+.categories:focus{
+    outline: none !important; 
+    box-shadow: none;
+}
+
+.categories:hover{
+    transform: scale(1.1);
+}
+
+/**********************************************
+                    VIEW-PRODUCTS
+**********************************************/
+.portfolio-item{
+    transition: all .2s ease-in-out;
+    margin-bottom: 2em;
+}
+
+.portfolio-item:hover{
+    transform: scale(1.1);
+}
+
+/**********************************************
+                   MEDIA QUERIES
+**********************************************/
+@media screen and (min-width: 0px) and (max-width: 1200px) { 
+    .active{
+        border: none;
+        color: #085f48 !important;
+    }
+    
+    .nav-item{
+        text-align: center;
+    }
+    
+    .nav-link:link{
+        border: none;
+        color: #085f48 !important;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) { 
+    .product-img{
+        margin-right: 10em;
+        width: 100%;
+    }  
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) { 
+    .product-img{
+        margin-right: 10em;
+        width: 100%;
+    } 
+    
+    .experiences-h2{
+        padding-left: -2em;
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767px) { 
+    .product-img{
+        margin-left: 4em;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 576px) { 
+    .product-img{
+        width: 100%;
+    }
+    
+    .categories{
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    #img-home{
+        width: 110%;
+    }
+}
