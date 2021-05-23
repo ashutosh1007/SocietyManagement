@@ -7,7 +7,7 @@
      $_SESSION['op'] = "delete";
      $_SESSION['p'] = "success";
      $_SESSION['page'] = "member";
-     header("Location: members.php"); 
+     header("Location: member.php"); 
  }
 ?>
 <!-- DataTales Example -->
@@ -66,7 +66,7 @@
                             echo "<td>$member_email</td>";
                             echo "<td>$member_role</td>";
                             if($user_role == 'admin'){ 
-                                echo "<td><a href='members.php?source=edit_member&mid=$member_id' class='btn btn-primary'><span class='fa fa-pen'></span> </a></td> ";
+                                echo "<td><a href='member.php?source=edit_member&mid=$member_id' class='btn btn-primary'><span class='fa fa-pen'></span> </a></td> ";
                                 echo "<td><button type='button' class='btn btn-danger delete-member' data-member-id='$member_id'> <span class='fa fa-trash'></span></button></td>";
                             } 
                             echo "</tr>";

@@ -9,7 +9,7 @@
     $user = new User();
     $email = $user->checkUser();
     $user_role = $_SESSION['member_role'];
-    // if($user_role == 'admin'){
+    if($user_role == 'admin' || $user_role == 'Society Member'){
 ?>
 
 <body id="page-top">
@@ -52,10 +52,10 @@
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i> </a>
     <?php
-    // }
-    // else{
-    //     echo "<h1>You are not allowed to view this part</h1><a href='logout.php'>back</a>";
-    // }
+    }
+    else{
+        echo "<h1>You are not allowed to view this part</h1><a href='logout.php'>back</a>";
+    }
     include_once("includes/footer.php")
     ?>
 </body>

@@ -7,7 +7,7 @@
         $_SESSION['op'] = "update";
         $_SESSION['p'] = "success";
         $_SESSION['page'] = "member";
-        Functions::redirect("members.php");
+        Functions::redirect("member.php");
     }
 ?>
 
@@ -41,7 +41,8 @@
         <div class="form-group">
                 <select name="member_role" id="member_role" class="form-control">
                    <option value="admin">Committee Member</option>
-                   <option value="society_member">Society Member</option>
+                   <option value="Society Member">Society Member</option>
+                   <option value="Visitor">Visitor</option>
                 </select>
         </div>
 

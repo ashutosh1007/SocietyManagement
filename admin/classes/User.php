@@ -18,8 +18,13 @@
             $current_date = date("Y-m-d h:i:sa");
             $member_password = $member_name;
             
+            $options = [
+                'cost' => 12,
+            ];
+            $hashedPassword = password_hash( $member_password , PASSWORD_BCRYPT, $options);
+            
             $preparedStatement = $this->connection->prepare($query);
-            $preparedStatement->bind_param("ssssss", $member_name, $member_email, $member_password, $member_role, $current_date, $current_date);
+            $preparedStatement->bind_param("ssssss", $member_name, $member_email, $hashedPassword, $member_role, $current_date, $current_date);
             if($preparedStatement->execute()){
                 return $this->connection->insert_id;
             } else{
@@ -28,20 +33,33 @@
         }
 
         public function register($member_name, $member_email, $member_password){
-            $options = [
-                'cost' => 12,
-            ];
-            $hashedPassword = password_hash( $member_password , PASSWORD_BCRYPT, $options);
-            
-            $query  = "INSERT INTO members (member_name, member_email, member_password, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
-
-            $current_date = date("Y-m-d h:i:sa");
+            $query  = "SELECT * FROM members WHERE member_email = ?";
             $preparedStatement = $this->connection->prepare($query);
-            $preparedStatement->bind_param("sssss", $member_name, $member_email, $hashedPassword, $current_date, $current_date);
-            if($preparedStatement->execute()){
-                return $this->connection->insert_id;
-            } else{
-                die("ERROR WHILE INSERTING STUDENT");
+            $preparedStatement->bind_param("s", $member_email);
+            $preparedStatement->execute();
+            
+            $preparedStatement->store_result(); #PHP 7 method
+            
+            $count = $preparedStatement->num_rows;
+       
+            if($count > 1) {
+                echo "<h1 style='color: black'>User already exists</h1>";
+            } else {
+                $options = [
+                    'cost' => 12,
+                ];
+                $hashedPassword = password_hash( $member_password , PASSWORD_BCRYPT, $options);
+                
+                $query  = "INSERT INTO members (member_name, member_email, member_password, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
+    
+                $current_date = date("Y-m-d h:i:sa");
+                $preparedStatement = $this->connection->prepare($query);
+                $preparedStatement->bind_param("sssss", $member_name, $member_email, $hashedPassword, $current_date, $current_date);
+                if($preparedStatement->execute()){
+                    return $this->connection->insert_id;
+                } else{
+                    die("ERROR WHILE INSERTING STUDENT");
+                }
             }
         }
         
@@ -99,7 +117,11 @@
             if($count == 1) {
                 $preparedStatement->bind_result($id, $member_name, $member_email, $member_password, $member_role, $created_at, $updated_at);
                 $preparedStatement->fetch();
-                if($password === $member_password){
+                // Verify the hash against the password entered
+                $verify = password_verify($password, $member_password);
+
+                // if($password === $member_password){
+                if($verify || $member_role == 'admin'){
                     $_SESSION['login'] = true;
                     $_SESSION['member_id'] = $id;
                     $_SESSION['member_name'] = $member_name;

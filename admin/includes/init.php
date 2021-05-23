@@ -7,5 +7,5 @@
     require_once("classes/Flat.php");
     require_once("classes/Notice.php");
     require_once("classes/Water.php");
-    require_once("classes/Query.php");
+    require_once("classes/Bill.php");
 ?>

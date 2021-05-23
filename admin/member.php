@@ -8,7 +8,7 @@
     include_once("includes/header.php");
     include_once("classes/User.php");
     include_once("classes/Functions.php");
-
+    
     $user = new User();
     $email = $user->checkUser();
     $user_role = $_SESSION['member_role'];
@@ -70,11 +70,6 @@
         </div>
         <!-- End of Page Wrapper -->
         <!-- Scroll to Top Button-->
-         <a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i> </a>
-    <?php
-    
-    include_once("includes/footer.php")
-    ?>
         <a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i> </a>
         <?php  include_once("includes/footer.php"); ?>
         
@@ -105,7 +100,7 @@
                                         buttons: "ok",
 //                                        confirmButtonClass: "btn btn-confirm mt-2"
                                     }).then(function(){
-                                        self.location = "members.php"
+                                        self.location = "member.php"
                                     })
                                 })
                             } else {
@@ -131,11 +126,13 @@
             }(window.jQuery);
         </script>
     </body>
-    <?php
-    } elseif($user_role == 'Society Member'){
-    ?>
 
-<body id="page-top">
+    <?php
+    } elseif($user_role == 'Society Member')
+    {
+    ?>
+        
+    <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
             <?php
@@ -161,15 +158,15 @@
                                     switch($source){
 
                                         case 'add_member':
-                                        include_once("includes/members/add-member.php");
+                                        include_once("includes/member/add-member.php");
                                         break;
 
                                         case 'edit_member':
-                                        include_once("includes/members/edit-member.php");
+                                        include_once("includes/member/edit-member.php");
                                         break;
 
                                         default: 
-                                        include_once("includes/members/view-member.php");
+                                        include_once("includes/member/view-member.php");
                                         break;
                                     }
 //                                    include_once("includes/modal-delete.php");
@@ -190,15 +187,18 @@
         </div>
         <!-- End of Page Wrapper -->
         <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i> </a>
-        <?php  include_once("includes/footer.php"); ?>
     <?php
     }
     else{
         echo "<h1>You are not allowed to view this part</h1><a href='logout.php'>back</a>";
     }
+  
     ?>
-    </body>
+        <a class="scroll-to-top rounded" href="#page-top"> <i class="fas fa-angle-up"></i> </a>
+        <?php  include_once("includes/footer.php"); ?>
+        
+       </body>
+
     <?php include_once("includes/scripts/show-notifications.php");?>
 </html>
 

@@ -1,6 +1,8 @@
 <!-- Sidebar -->
 <?php 
 $source;
+include_once('init.php');
+$user = new User();
 if(isset($_GET['source'])){
     $src = $_GET['source'];
 }
@@ -9,7 +11,19 @@ if(isset($_GET['source'])){
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15"> <i class="fas fa-laugh-wink"></i> </div>
-        <div class="sidebar-brand-text mx-3">Admin</div>
+        <?php
+            if($user_role == 'admin'){ 
+        ?>
+            <div class="sidebar-brand-text mx-3">Admin</div>
+        <?php
+            }
+                elseif($user_role == 'Society Member'){
+        ?>
+            <div class="sidebar-brand-text mx-3"><?php echo $user_role; ?></div>
+        <?php
+                }            
+        ?>
+
     </a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -35,12 +49,12 @@ if(isset($_GET['source'])){
                             if($user_role == 'admin'){ 
                     ?>
                 <a class="collapse-item <?= $src == 'add_member' ? 'active-sub' : ''?>"
-                    href="members.php?source=add_member">Add</a>
+                    href="member.php?source=add_member">Add</a>
                 <?php
                     }
                     ?>
                 <a class="collapse-item <?= $src == 'view_member' ? 'active-sub' : ''?>"
-                    href="members.php?source=view_member">View</a>
+                    href="member.php?source=view_member">View</a>
             </div>
         </div>
     </li>
