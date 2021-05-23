@@ -24,18 +24,18 @@
             }
         }
         
-        public function getTotalNoticeCount(){
-            $sql = "SELECT count(*) AS total_count from notice";
+        public function getTotalBillCount(){
+            $sql = "SELECT count(*) AS total_count from bill";
             $result_set = $this->connection->query($sql);
             if($row = mysqli_fetch_assoc($result_set)){
                 return $row['total_count'];
             }else{
-                die("Error while Fetching total count of Notice");
+                die("Error while Fetching total count of Bill");
             }
         }
         
-        public function getAllDetailsOfANotice($notice_id){
-            $sql = "SELECT * FROM notice WHERE id=$notice_id";
+        public function getAllDetailsOfABill($bill_id){
+            $sql = "SELECT * FROM bill WHERE id=$bill_id";
             $result_set = $this->connection->query($sql);
             if($this->connection->error)
                 echo $this->connection->error;
@@ -53,17 +53,17 @@
             return $result_set;
         }
 
-        public function updateNotice($notice_id, $notice_title, $notice_description){
-            $query  = "UPDATE notice SET notice_title = ?, notice_description = ?, updated_at = ? WHERE id = ?";
+        public function updateBill($bill_id, $bill_type, $bill_amount){
+            $query  = "UPDATE bill SET bill_type = ?, bill_amount = ?, updated_at = ? WHERE id = ?";
 
             $current_date = date("Y-m-d h:i:sa");
             
             $preparedStatement = $this->connection->prepare($query);
-            $preparedStatement->bind_param("sssi", $notice_title, $notice_description, $current_date, $notice_id);
+            $preparedStatement->bind_param("sisi", $bill_type, $bill_amount, $current_date, $bill_id);
             if($preparedStatement->execute()){
                 return true;
             } else{
-                die("ERROR WHILE UPDATING Notice");
+                die("ERROR WHILE UPDATING Bill");
             }
         }
 

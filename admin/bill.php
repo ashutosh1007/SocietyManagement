@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $source = "Notice";
+    $source = "Bill";
     include_once("includes/header.php");
     include_once("classes/User.php");
     include_once("classes/Functions.php");

@@ -1,26 +1,26 @@
 <?php 
-    if(isset($_POST['submit_edit_notice'])) {
-        $nid = $_GET['nid'];
+    if(isset($_POST['submit_edit_bill'])) {
+        $bid = $_GET['bid'];
         extract($_POST);
-        $notice = new Notice();
-        $notice_update = $notice->updateNotice($nid, $notice_title, $notice_description);
+        $bill = new Bill();
+        $bill_update = $bill->updateBill($bid, $bill_type, $bill_amount);
         $_SESSION['op'] = "update";
         $_SESSION['p'] = "success";
-        $_SESSION['page'] = "notice";
-        Functions::redirect("notice.php");
+        $_SESSION['page'] = "bill";
+        Functions::redirect("bill.php");
     }
 ?>
 
 <?php 
-    if( isset($_GET['nid'] ) ) {
-        $nid = $_GET['nid'];
-        $notice = new Notice();
-        $result_set = $notice->getAllDetailsOfANotice($nid);
+    if( isset($_GET['bid'] ) ) {
+        $bid = $_GET['bid'];
+        $bill = new Bill();
+        $result_set = $bill->getAllDetailsOfABill($bid);
         if($row = mysqli_fetch_assoc($result_set)){
             extract($row);
-            $notice_id = $row['id'];
-            $notice_title = $row['notice_title'];
-            $notice_description = $row['notice_description'];
+            $bill_id = $row['id'];
+            $bill_type = $row['bill_type'];
+            $bill_amount = $row['bill_amount'];
         }
     }
 ?>
@@ -28,17 +28,20 @@
 <div class="row">
    <div class="col-md-6">
     <form method="post">
-        <div class="form-group">
-            <input type="text" id="notice_title" name="notice_title" class="form-control" placeholder="Enter Notice Title" value="<?php echo $notice_title; ?>"> 
-        </div>
+    <div class="form-group">
+                <select name="bill_type" id="bill_type" class="form-control">
+                   <option value="Maintainence">Maintainence</option>
+                   <option value="Water Bill">Water Bill</option>
+                </select>
+            </div>
             
-        <div class="form-group">
-            <textarea id="notice_description" name="notice_description" class="form-control" cols="30" rows="10" placeholder="Notice Description"><?php echo $notice_description; ?></textarea>
-        </div>
+            <div class="form-group">
+                <input type="text" id="bill_amount" name="bill_amount" class="form-control" placeholder="Enter Bill Amount" value="<?php echo $bill_amount?>">
+            </div>
          
         <div class="form-group">                       
-            <button type="submit" name="submit_edit_notice" id="submit_edit_notice" class="btn btn-success">
-            Edit Notice</button>
+            <button type="submit" name="submit_edit_bill" id="submit_edit_bill" class="btn btn-success">
+            Edit Bill</button>
         </div>
     </form>
 </div>

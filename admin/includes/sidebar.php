@@ -45,7 +45,7 @@ if(isset($_GET['source'])){
         </div>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Pages Collapse Menu
     <li class="nav-item">
         <a class="nav-link <?= $source == 'Query' ? 'active' : 'collapsed'?>" href="#" data-toggle="collapse"
             data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-list-alt"></i>
@@ -60,7 +60,7 @@ if(isset($_GET['source'])){
                     href="query.php?source=view_query">View</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
